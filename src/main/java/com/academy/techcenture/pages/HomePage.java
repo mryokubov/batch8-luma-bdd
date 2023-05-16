@@ -21,6 +21,9 @@ public class HomePage {
     @FindBy(how = How.CLASS_NAME, using = "logged-in")
     protected WebElement signInWelcomeMsg;
 
+    @FindBy(how = How.PARTIAL_LINK_TEXT, using = "Create an Account")
+    protected WebElement createAccountLink;
+
 
     public void clickSignInLink(){
         signInLink.click();
@@ -28,5 +31,10 @@ public class HomePage {
 
     public void verifyLoggedInMsg(){
         Assert.assertTrue(signInWelcomeMsg.isDisplayed());
+    }
+
+    public void clickCreateAccountLink(){
+        Assert.assertTrue("Create account link is not displayed", createAccountLink.isDisplayed());
+        createAccountLink.click();
     }
 }

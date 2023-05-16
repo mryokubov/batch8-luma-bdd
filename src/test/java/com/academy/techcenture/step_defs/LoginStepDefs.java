@@ -1,5 +1,6 @@
 package com.academy.techcenture.step_defs;
 
+import com.academy.techcenture.config.ConfigReader;
 import com.academy.techcenture.driver.Driver;
 import com.academy.techcenture.pages.HomePage;
 import com.academy.techcenture.pages.LoginPage;
@@ -17,7 +18,7 @@ public class LoginStepDefs {
 
     @Given("user is on the home page")
     public void user_is_on_the_login_page() {
-        driver.get("https://magento.softwaretestingboard.com/");
+        driver.get(ConfigReader.getProperty("url"));
         Assert.assertTrue(driver.getTitle().equals("Home Page"));
 
     }

@@ -7,7 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/com/academy/techcenture/features" ,
-        glue = "com/academy/techcenture/step_defs")
+        glue = "com/academy/techcenture/step_defs",
+        dryRun = false,
+        tags = "@register"
+)
 public class Runner {
 
 }
