@@ -4,14 +4,14 @@ Feature: Luma Login Feature
     Given user is on the home page
     When user clicks on sign in link
 
-  @regression
+  @regression @smoke
   Scenario: Successful login
     When user enters a valid username "kevin.lee@gmail.com"
     And user enters a valid password "Kevin123"
     And user clicks on the sign in button
     Then user should be logged in successfully
 
-  @regression
+  @regression @smoke
   Scenario: Invalid credentials
     When user enters a valid username "kevin.lee@gmail.com"
     And user enters an invalid password "KevinIncorrect"

@@ -17,12 +17,14 @@ public class Driver {
     public static WebDriver getDriver() {
         if (driver == null){
             String browser = ConfigReader.getProperty("browser");
+            boolean headless = Boolean.parseBoolean(ConfigReader.getProperty("headless"));
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     //extra configuration
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--remote-allow-origins=*");
+                    options.setHeadless(headless);
                     driver = new ChromeDriver(options);
                     break;
                 case "firefox":

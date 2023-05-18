@@ -20,7 +20,7 @@ Feature: Luma User Registration Feature
 #    |Bob        | Peterson  |    yes       |bob.abcd130@yahoo.com   | Bob.pete123! | Bob.pete123!      |
 #    |Bob        | Peterson  |    yes       |bob.abcd140@yahoo.com   | Bob.pete123! | Bob.pete123!      |
 
-    @smoke
+#    @smoke
     Examples:
     |first_name | last_name |news_letter   | email                 | password     | confirm_password  |
     |Bob        | Peterson  |    yes       |bob.abcddsfdaf@yahoo.com   | Bob.pete123! | Bob.pete123!      |
