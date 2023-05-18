@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateAccountPage extends HomePage{
 
@@ -31,6 +32,11 @@ public class CreateAccountPage extends HomePage{
 
     @FindBy(xpath = "//button[@title='Create an Account']")
     protected WebElement createAccountBtn;
+
+    public void verifyTitle(){
+        wait.until(ExpectedConditions.titleIs("Create New Customer Account"));
+        Assert.assertTrue(driver.getTitle().equals("Create New Customer Account"));
+    }
 
 
     public void enterFirstName(String firstName){

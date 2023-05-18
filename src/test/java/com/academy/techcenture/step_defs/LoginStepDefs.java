@@ -4,30 +4,29 @@ import com.academy.techcenture.config.ConfigReader;
 import com.academy.techcenture.driver.Driver;
 import com.academy.techcenture.pages.HomePage;
 import com.academy.techcenture.pages.LoginPage;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 public class LoginStepDefs {
 
     private HomePage homePage;
     private LoginPage loginPage;
-    private WebDriver driver;
+    private WebDriver driver = Driver.getDriver();
 
     @Given("user is on the home page")
     public void user_is_on_the_login_page() {
         driver.get(ConfigReader.getProperty("url"));
-        Assert.assertTrue(driver.getTitle().equals("Home Page"));
-
+        homePage = new HomePage(driver);
+        homePage.verifyTitle();
     }
+
     @When("user clicks on sign in link")
     public void userClicksOnSignInLink() {
         homePage.clickSignInLink();
-        String loginPageTitle = driver.getTitle();
-        Assert.assertEquals("Login Page title is not correct","Customer Login", loginPageTitle);
+        loginPage = new LoginPage(driver);
+        loginPage.verifyTitle();
     }
+
     @When("user enters a valid username {string}")
     public void user_enters_a_valid_username(String username) {
         loginPage.enterUserName(username);
@@ -53,23 +52,8 @@ public class LoginStepDefs {
         loginPage.enterPassword(invalidPass);
     }
 
-    @Then("user should see an error message")
-    public void user_should_see_an_error_message() {
-        loginPage.verifySignInError();
+    @Then("user should see an error message {string}")
+    public void userShouldSeeAnErrorMessage(String errorMsg) {
+        loginPage.verifySignInError(errorMsg);
     }
-
-    @Before
-    public void setUp(){
-        driver = Driver.getDriver();
-        homePage = new HomePage(driver);
-        loginPage = new LoginPage(driver);
-    }
-
-    @After
-    public void tearDown(){
-        if (driver != null){
-            driver.quit();
-        }
-    }
-
 }

@@ -5,17 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LoginPage {
-
-    private WebDriver driver;
+public class LoginPage extends HomePage{
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
-
 
     @FindBy(how = How.ID, using = "email")
     protected WebElement emailInput;
@@ -29,6 +25,10 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'The account sign-in was incorrect')]")
     protected WebElement signInError;
 
+    public void verifyTitle(){
+        wait.until(ExpectedConditions.titleIs("Customer Login"));
+        Assert.assertTrue(driver.getTitle().equals("Customer Login"));
+    }
 
     public void enterUserName(String username){
         emailInput.sendKeys(username);
@@ -43,8 +43,9 @@ public class LoginPage {
         signInBtn.click();
     }
 
-    public void verifySignInError(){
+    public void verifySignInError(String errorMsg){
         Assert.assertTrue("Sign in error was not displayed", signInError.isDisplayed());
+        Assert.assertTrue("Error message is not correct", signInError.getText().trim().equals(errorMsg));
     }
 
 }

@@ -1,6 +1,6 @@
-Feature: Luma User Registration
+@regression
+Feature: Luma User Registration Feature
 
-  @register
   Scenario Outline: Create a new account on Luma website
     Given user is on the homepage
     When user clicks on create account link on top right
@@ -15,6 +15,12 @@ Feature: Luma User Registration
     Then user should be registered successful and be navigated to my account page
 
     Examples:
-    |first_name | last_name |news_letter   | email                 | password     | confirm_password |
-    |Bob        | Peterson  |    yes       |bob.peterson1@yahoo.com | Bob.pete123! | Bob.pete123!     |
+    |first_name | last_name |news_letter   | email                 | password     | confirm_password  |
+    |Bob        | Peterson  |    yes       |bob.f34dfq45@yahoo.com   | Bob.pete123! | Bob.pete123!      |
+#    |Bob        | Peterson  |    yes       |bob.abcd130@yahoo.com   | Bob.pete123! | Bob.pete123!      |
+#    |Bob        | Peterson  |    yes       |bob.abcd140@yahoo.com   | Bob.pete123! | Bob.pete123!      |
 
+    @smoke
+    Examples:
+    |first_name | last_name |news_letter   | email                 | password     | confirm_password  |
+    |Bob        | Peterson  |    yes       |bob.abcddsfdaf@yahoo.com   | Bob.pete123! | Bob.pete123!      |
