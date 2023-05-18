@@ -9,20 +9,14 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.io.IOException;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 
 
 public class Hooks {
-
-    private ExtentReports extentReports;
-    private ExtentTest extentTest;
 
     @Before
     public void setUp() {
         Driver.getDriver();
     }
-
 
 
     @After
