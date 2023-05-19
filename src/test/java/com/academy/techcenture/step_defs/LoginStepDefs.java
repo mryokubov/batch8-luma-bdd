@@ -2,8 +2,10 @@ package com.academy.techcenture.step_defs;
 
 import com.academy.techcenture.config.ConfigReader;
 import com.academy.techcenture.driver.Driver;
+import com.academy.techcenture.hooks.Hooks;
 import com.academy.techcenture.pages.HomePage;
 import com.academy.techcenture.pages.LoginPage;
+import com.aventstack.extentreports.ExtentTest;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 

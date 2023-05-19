@@ -1,4 +1,4 @@
-#@regression
+@smoke
 Feature: Luma Subscribe Functionality
 
   Scenario Outline: Subscribe with email
@@ -9,6 +9,5 @@ Feature: Luma Subscribe Functionality
 
     Examples:
     |email                       |
-    | walter.bob5000@yahoo.com    |
-    | walter.bob5001@yahoo.com    |
-    | walter.bob5002@yahoo.com    |
+    | pl.bob50440330@yahoo.com    |
+    | pl.bob500551@yahoo.com    |
